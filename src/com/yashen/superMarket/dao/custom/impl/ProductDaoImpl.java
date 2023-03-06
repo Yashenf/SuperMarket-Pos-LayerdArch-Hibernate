@@ -9,7 +9,6 @@
 package com.yashen.superMarket.dao.custom.impl;
 
 import com.yashen.superMarket.dao.custom.ProductDAO;
-import com.yashen.superMarket.entity.Customer;
 import com.yashen.superMarket.entity.Product;
 import org.hibernate.Session;
 
@@ -45,8 +44,9 @@ public class ProductDaoImpl implements ProductDAO {
     @Override
     public Product delete(Product product, Session session) throws SQLException, ClassNotFoundException {
         try {
+            Product tempProduct = session.get(Product.class, product.getCode());
             session.delete(product);
-            return product;
+            return tempProduct;
         } catch (Exception e) {
             System.out.println("Product Not Deleted!  , " + e.getMessage());
             return null;

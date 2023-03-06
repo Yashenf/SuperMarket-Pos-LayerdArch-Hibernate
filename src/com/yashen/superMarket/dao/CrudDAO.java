@@ -14,7 +14,7 @@ import org.hibernate.Session;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface CrudDAO<T extends SuperEntity,ID> {
+public interface CrudDAO<T extends SuperEntity,ID>  extends SuperDAO{
      T save(T t , Session session) throws SQLException,ClassNotFoundException;
      T update(T t , Session session) throws SQLException,ClassNotFoundException;
      T delete(T t , Session session) throws SQLException,ClassNotFoundException;
